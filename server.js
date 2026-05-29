@@ -6,6 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+console.log("DATABASE_URL EXISTS:", !!process.env.DATABASE_URL);
 
 // ✅ Use DATABASE_URL from Render (Supabase connection)
 const pool = new Pool({
