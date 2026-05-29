@@ -14,6 +14,9 @@ if (process.env.DATABASE_URL) {
     process.env.DATABASE_URL.substring(0, 30)
   );
 }
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
 
 // ✅ Use DATABASE_URL from Render (Supabase connection)
 const pool = new Pool({
