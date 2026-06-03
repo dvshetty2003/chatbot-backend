@@ -70,6 +70,29 @@ app.post('/save-chat', async (req, res) => {
   }
 });
 
+app.get('/messages', async (req, res) => {
+
+  try {
+
+    const result = await pool.query(`
+      SELECT *
+      FROM messages
+      ORDER BY created_at DESC
+      LIMIT 1000
+    `);
+
+    res.json(result.rows);
+
+  } catch (err) {
+
+    console.log(err);
+
+    res.status(500).send("Error");
+
+  }
+
+});
+
 // ✅ Use dynamic port for Render
 const PORT = process.env.PORT || 3000;
 
